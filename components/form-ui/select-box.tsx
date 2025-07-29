@@ -11,7 +11,7 @@ export default function Selectbox({
   defaultvalue,
 }: {
   className: string;
-  countries: ShippingArrayDataType[];
+  countries: ShippingArrayDataType[] | null;
   nameAttr: string;
   label: string;
   defaultvalue: string;

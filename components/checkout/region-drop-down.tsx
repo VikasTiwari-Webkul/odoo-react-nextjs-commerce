@@ -10,13 +10,13 @@ export default function Selectbox({
   label,
   nameAttr,
 }: {
-  countries: ShippingArrayDataType[];
+  countries: ShippingArrayDataType[] | null;
   className: string;
   label: string;
   nameAttr: string;
 }) {
   const { countryCode } = useGlobalContext();
-  const stateArray = countries.find(
+  const stateArray = countries?.find(
     (country: ShippingArrayDataType) => country.id === countryCode,
   );
 
