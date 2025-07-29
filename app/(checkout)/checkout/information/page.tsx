@@ -5,8 +5,14 @@ import GuestCheckOutForm from "~components/checkout/information/checkout-form";
 import { Suspense } from "react";
 
 export default async function Information() {
-  const countryList = await getCountryList();
-
+  let countryList = null;
+  try {
+    countryList = await getCountryList();
+  } catch (error) {
+    console.error("Error fetching country list:", error);
+    // Handle the error appropriately, e.g., set a default value or rethrow
+    countryList = null;
+  }
   return (
     <Suspense fallback={<FormPlaceHolder />}>
       <GuestCheckOutForm countries={countryList} />

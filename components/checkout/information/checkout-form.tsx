@@ -18,7 +18,7 @@ import { useSession } from "next-auth/react";
 const GuestCheckOutForm = ({
   countries,
 }: {
-  countries: ShippingArrayDataType[];
+  countries: ShippingArrayDataType[] | null;
 }) => {
   const values = getLocalStorage(SAVED_LOCAL_STORAGE, true);
   const { data: session } = useSession();
