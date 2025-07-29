@@ -601,11 +601,16 @@ export async function getProducts({
  * @returns
  */
 export async function getCountryList(): Promise<ShippingArrayDataType[]> {
-  const res = await odooFetch<OdooCountriesOperation>({
-    query: "country",
-    method: "POST",
-  });
-  return res.body?.countries;
+  try {
+    const res = await odooFetch<OdooCountriesOperation>({
+      query: "country",
+      method: "POST",
+    });
+    return res.body?.countries || [];
+  } catch (error) {
+    console.error("Error fetching country list:", error);
+    return []; // fallback so build doesn’t crash
+  }
 }
 
 export async function addShippingAddress(
